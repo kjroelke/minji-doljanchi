@@ -9,14 +9,26 @@
 * Also, you can add custom colors with the sass `map` below
 */
 
-$primary: #121150;
-$secondary: #6c757d;
-$success: #99ddec;
-$light: #eff0fe;
-$dark: #01010e;
+$primary: #6fb1a0;
+$secondary: #c5d9c4;
+$success: #f4c95d;
+$info: #fbeaea;
+$light: #f6ebd9;
+$dark: #3a3a3a;
+
+// Soft Blush - #FBEAEA - Background
+// Warm Beige - #F6EBD9 - Section BG
+// Sage Green - #C5D9C4 - Accents
+// Muted Teal - #6FB1A0 - CTAs & Highlights
+// Charcoal - #3A3A3A - Text
+// Sun Gold - #F4C95D - Buttons/Icons
 
 $custom-colors: (
-	"accent": #f4ad86,
+	"blush": #fbeaea,
+	"beige": #f6ebd9,
+	"teal": #6fb1a0,
+	"gold": #f4c95d,
+	"sage": #c5d9c4,
 );
 
 // ================================================
