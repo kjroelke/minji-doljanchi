@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+---
+
+<BaseLayout>
+	<main class="container my-5">
+		<div class="row justify-content-center fs-6 row-gap-4">
+			<section class="col-lg-8">
+				<h1>Welcome to the Astro x Bootstrap Starter Kit</h1>
+				<h2>🧑‍💻 About this Project</h2>
+				<p>This was built to quickly write code that mirror's WordPress-style architecture and that uses Bootstrap 5.</p>
+				<p>Astro scopes CSS to the file you're in by default, so any global changes that need to be made should be made inside of the <kbd>src/scss</kbd> directory.</p>
+				<p>This is a Github Repo Template. It's made to be cut up and changed! It also comes with a default Github Pages <kbd>deploy.yml</kbd> file so you can quickly and easily share a preview URL. Configure the <kbd>astro.config.mjs</kbd> file with the proper <code>base</code> property value (it should be the name of the repo you're building in) to make things work. You'll need to restart your <code>npm run start</code> terminal command to update the URL in your browser. <a href="https://docs.astro.build/en/guides/deploy/github/#deploying-to-a-githubio-url" target="_blank" rel="noopener noreferrer" class="fw-bold">Learn more about deploying to a Github page here</a>.</p>
+				<h2>✨ Astro's Key Features</h2>
+				<ul>
+					<li>Section composition is super easy with <code>.astro</code> files! <ul><li>A <code>.astro</code> file can be used to join together files found in the <kbd>src/components</kbd> directory. This directory can include a mix of whatever file type you want. From <code>.html</code> to <code>.tsx</code>, Astro will take care of it!</li></ul></li>
+					<li>Creating a new page is easy: just create a new file in the <kbd>src/pages</kbd> directory.</li>
+					<li>The Astro equivalent to WordPress's "Page Templates" is the <kbd>src/layouts</kbd> directory. The only difference is that instead of using <code>`get_template_part()`</code> to call in other elements, you can either import them at the top of the file (between the <code>`---`</code> braces) or you can use the <code>`&lt;slot/&gt;`</code> method which allows you to pass whatever you want inside of it (similar to the WordPress function <code>`the_content()`</code> except you're writing code instead of using a WYSIWYG editor).</li>
+				</ul>
+			</section>
+			<section class="col-lg-8">
+				<h2>🚀 Project Structure</h2>
+				<p>Inside of your Astro project, you'll see the following folders and files:</p>
+				<pre>
+├── public/
+├── src/
+│   ├── components/
+│   ├── content/
+│   ├── layouts/
+│   └── pages/
+├── astro.config.mjs
+├── README.md
+├── package.json
+└── tsconfig.json
+				</pre>
+				<p>Astro looks for <code>.astro</code> or <code>.md</code> files in the <code>src/pages/</code> directory. Each page is exposed as a route based on its file name.</p>
+				<p>There's nothing special about <code>src/components/</code>, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.</p>
+				<p>The <code>src/content/</code> directory contains "collections" of related Markdown and MDX documents. Use <code>getCollection()</code> to retrieve posts from <code>src/content/blog/</code>, and type-check your frontmatter using an optional schema. See <a href="https://docs.astro.build/en/guides/content-collections/" target="_blank" rel="noreferrer noopener">Astro's Content Collections docs</a> to learn more.</p>
+				<p>Any static assets, like images, can be placed in the <code>public/</code> directory.</p>
+			</section>
+			<section class="col-lg-8">
+				<h2>👀 Want to learn more?</h2>
+				<p>Check out <a href="https://docs.astro.build" target="_blank" rel="noopener noreferrer">Astro's documentation</a> or jump into their <a href="https://astro.build/chat" target="_blank" rel="noopener noreferrer">Discord server</a>.</p>
+			</section>
+		</div>
+	</main>
+</BaseLayout>

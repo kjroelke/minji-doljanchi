@@ -1,0 +1,23 @@
+{
+	"name": "astro-starter-template",
+	"type": "module",
+	"version": "2.0.0",
+	"prettier": "@wordpress/prettier-config",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.9.4",
+		"astro": "^5.8.1",
+		"bootstrap": "^5.3.6",
+		"sass": "^1.89.1",
+		"typescript": "^5.8.3"
+	},
+	"devDependencies": {
+		"@wordpress/prettier-config": "^4.24.0"
+	}
+}
