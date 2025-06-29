@@ -1,7 +1,6 @@
 ---
 import AnimalPrint from '../assets/animal-print.svg';
-import { Image } from 'astro:assets';
-import bg from '../assets/animal-print.jpg';
+const bgUrl = '/minji-doljanchi/animal-print.jpg';
 
 export interface Props {
 	color?: string;
@@ -13,16 +12,22 @@ const { color = 'primary', opacity = 0.5, id } = Astro.props;
 ---
 
 <style>
-	svg {
+	section {
+		background-image: var(--bg-image);
+		background-repeat: repeat;
+	}
+
+	.overlay {
 		opacity: var(--bg-opacity, 0.5);
+		mix-blend-mode: screen;
 	}
 </style>
 <section
 	id={id}
-	class={`bg-${color} py-5 position-relative overflow-hidden`}
-	style={`--bg-opacity: ${opacity};`}
+	class={`py-5 position-relative`}
+	style={`--bg-opacity: ${opacity};--bg-image: url(${bgUrl})`}
 >
-	<AnimalPrint class='position-absolute z-1 w-100 h-auto inset-0' />
+	<div class={`overlay bg-${color} position-absolute inset-0`}></div>
 	<div class='container position-relative z-2'>
 		<slot />
 	</div>

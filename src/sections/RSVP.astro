@@ -1,47 +1,70 @@
 <section
-	class='py-5'
+	class='py-5 container'
 	id='rsvp'
 >
-	<div class='container text-center'>
-		<h2 class='display-2'>Let Us Know You're Coming!</h2>
-		<form
-			action='https://formspree.io/f/your-form-id'
-			method='POST'
-			class='row g-3 justify-content-center mt-4'
-		>
-			<div class='col-md-4'>
-				<input
-					type='text'
-					class='form-control'
-					name='name'
-					placeholder='Your Name'
-					required
-				/>
-			</div>
-			<div class='col-md-4'>
-				<input
-					type='email'
-					class='form-control'
-					name='email'
-					placeholder='Your Email'
-					required
-				/>
-			</div>
-			<div class='col-md-8'>
-				<textarea
-					class='form-control'
-					name='message'
-					rows='3'
-					placeholder='Number of guests / Dietary restrictions'
-				></textarea>
-			</div>
-			<div class='col-12'>
-				<button
-					type='submit'
-					class='btn btn-outline-dark'
-					>RSVP Now</button
-				>
-			</div>
-		</form>
+	<h2 class='display-2 text-center'>Let Us Know You're Coming!</h2>
+	<div class='row justify-content-center'>
+		<div class='col-md-8'>
+			<form
+				action='https://formspree.io/f/your-form-id'
+				method='POST'
+				class='row row-gap-3 justify-content-center text-md-center'
+			>
+				<div class='col-md-6'>
+					<input
+						type='text'
+						class='form-control'
+						name='name'
+						placeholder='Your Name'
+						required
+					/>
+				</div>
+				<div class='col-md-6'>
+					<input
+						type='email'
+						class='form-control'
+						name='email'
+						placeholder='Your Email'
+						required
+					/>
+				</div>
+				<div class='col-12'>
+					<textarea
+						class='form-control'
+						name='message'
+						rows='3'
+						placeholder='Number of guests / Dietary restrictions'
+					></textarea>
+				</div>
+				<div class='col-12'>
+					<div
+						class='row gap-3 align-items-center row-gap-3 justify-content-md-center'
+					>
+						<div class='col-auto'>
+							<p class='display-6 font-body fw-normal mb-0'>
+								What will Olivia choose during her doljabi
+								ceremony?
+							</p>
+						</div>
+						<div class='col-auto'>
+							<select class='form-select'>
+								<option>🎤 Singer</option>
+								<option>➕ Mathematician</option>
+								<option>🩺 Doctor</option>
+								<option>🎨 Artist</option>
+								<option>⚽ Athlete</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class='col-12'>
+					<button
+						type='submit'
+						class='btn btn-outline-dark'
+						>RSVP Now</button
+					>
+				</div>
+			</form>
+		</div>
 	</div>
 </section>
