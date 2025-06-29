@@ -9,12 +9,12 @@
 * Also, you can add custom colors with the sass `map` below
 */
 
-$primary: #6fb1a0;
-$secondary: #c5d9c4;
-$success: #f4c95d;
-$info: #fbeaea;
-$light: #f6ebd9;
-$dark: #3a3a3a;
+$primary: #6fb1a0; // teal
+$secondary: #c5d9c4; // sage
+$success: #f4c95d; // sun gold
+$info: #fbeaea; // soft blush
+$light: #f6ebd9; // warm beige
+$dark: #3a3a3a; // charcoal
 
 // Soft Blush - #FBEAEA - Background
 // Warm Beige - #F6EBD9 - Section BG
@@ -24,11 +24,8 @@ $dark: #3a3a3a;
 // Sun Gold - #F4C95D - Buttons/Icons
 
 $custom-colors: (
-	"blush": #fbeaea,
-	"beige": #f6ebd9,
-	"teal": #6fb1a0,
-	"gold": #f4c95d,
-	"sage": #c5d9c4,
+	"white": #ffffff,
+	"black": #000000,
 );
 
 // ================================================
@@ -84,6 +81,7 @@ $display-line-height: calc(2ex + 4px);
 * Buttons
 */
 $btn-transition: all v.$transition-standard;
+$btn-border-width: 2px;
 
 $input-btn-padding-x: 0.75rem;
 $input-btn-padding-y: 0.375rem;
@@ -114,7 +112,7 @@ $input-btn-padding-y-sm: 0.25rem;
 * Offcanvas
 */
 
-// $offcanvas-bg-color: $primary;
+$offcanvas-bg-color: $info;
 $offcanvas-color: white;
 
 // ================================================
@@ -178,7 +176,7 @@ $theme-colors: map.merge($theme-colors, $custom-colors);
 @import "bootstrap/scss/type";
 // @import "bootstrap/scss/images";
 // @import "bootstrap/scss/tables";
-// @import "bootstrap/scss/forms";
+@import "bootstrap/scss/forms";
 // @import "bootstrap/scss/button-group";
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar"; // Requires nav
@@ -191,7 +189,7 @@ $theme-colors: map.merge($theme-colors, $custom-colors);
 // @import "bootstrap/scss/progress";
 // @import "bootstrap/scss/list-group";
 // @import "bootstrap/scss/toasts";
-@import "bootstrap/scss/modal"; // Requires transitions
+// @import "bootstrap/scss/modal"; // Requires transitions
 // @import "bootstrap/scss/tooltip";
 // @import "bootstrap/scss/popover";
 // @import "bootstrap/scss/carousel";

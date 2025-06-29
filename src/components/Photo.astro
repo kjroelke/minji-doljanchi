@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+
+export interface Props {
+	photo: ImageMetadata;
+	alt: string;
+}
+
+const { photo, alt } = Astro.props;
+---
+
+<figure class='ratio ratio-1x1 mb-0'>
+	<Image
+		src={photo}
+		class='img-fluid rounded-circle shadow object-fit-cover'
+		alt={alt}
+		width={400}
+		height={400}
+	/>
+</figure>

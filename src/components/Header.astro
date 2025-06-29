@@ -4,79 +4,44 @@ import { SITE_TITLE } from '../consts';
 
 const navLinks = [
 	{
-		href: 'about',
-		text: 'About',
+		href: 'details',
+		text: 'Details',
+	},
+	{
+		href: 'doljabi',
+		text: "Predict Min-Ji's Future",
+	},
+	{
+		href: 'gallery',
+		text: 'Gallery',
+	},
+	{
+		href: 'rsvp',
+		text: 'RSVP',
 	},
 ];
 ---
 
-<script>
-	import 'bootstrap/js/dist/offcanvas';
-</script>
-<style>
-	header {
-		top: var(--wp-admin--admin-bar-height, 0);
-	}
-</style>
 <header
-	class='shadow-sm container-fluid gx-5 position-sticky bg-white py-4 z-3'
+	class='shadow-sm container-fluid py-2 top-0 position-sticky bg-white z-3'
 >
-	<nav class='navbar navbar-expand-md justify-content-between'>
-		<h2 class='m-0 fs-4'>
-			<a
-				class='text-decoration-none'
-				href='/astro-starter'
-				>{SITE_TITLE}</a
-			>
-		</h2>
-		<button
-			class='navbar-toggler'
-			type='button'
-			data-bs-toggle='offcanvas'
-			data-bs-target='#navbarSupportedContent'
-			aria-controls='navbarSupportedContent'
-			aria-expanded='false'
-			aria-label='Toggle navigation'
-		>
-			<span class='navbar-toggler-icon'></span>
-		</button>
-		<div
-			class='offcanvas offcanvas-end justify-content-end'
-			tabindex='-1'
-			id='navbarSupportedContent'
-		>
-			<div class='offcanvas-header'>
-				<h5
-					class='offcanvas-title'
-					id='offcanvasNavbarLabel'
-				>
-					Offcanvas
-				</h5>
-				<button
-					type='button'
-					class='btn-close'
-					data-bs-dismiss='offcanvas'
-					aria-label='Close'
-				></button>
-			</div>
-			<div class='offcanvas-body align-self-md-end'>
-				<ul class='navbar-nav align-items-md-center gap-3'>
-					{
-						navLinks.map(({ href, text }) => (
-							<li>
-								<HeaderLink href={href}>{text}</HeaderLink>
-							</li>
-						))
-					}
-					<li>
-						<HeaderLink
-							href='#'
-							class={'btn btn-primary'}
-							>Do the Thing</HeaderLink
-						>
-					</li>
-				</ul>
-			</div>
+	<div class='row justify-content-between row-gap-3 mb-3'>
+		<div class='col-12'>
+			<h2 class='text-center m-0 display-1'>{SITE_TITLE}</h2>
 		</div>
-	</nav>
+		<nav class='col-12'>
+			<ul
+				class='navbar-nav flex-row justify-content-center align-items-center gap-3'
+			>
+				{
+					navLinks.map(({ href, text }) => (
+						<li>
+							<HeaderLink href={href}>{text}</HeaderLink>
+						</li>
+					))
+				}
+				<li></li>
+			</ul>
+		</nav>
+	</div>
 </header>

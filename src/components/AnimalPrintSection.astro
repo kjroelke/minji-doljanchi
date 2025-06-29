@@ -1,0 +1,29 @@
+---
+import AnimalPrint from '../assets/animal-print.svg';
+import { Image } from 'astro:assets';
+import bg from '../assets/animal-print.jpg';
+
+export interface Props {
+	color?: string;
+	opacity?: number;
+	id?: string;
+}
+
+const { color = 'primary', opacity = 0.5, id } = Astro.props;
+---
+
+<style>
+	svg {
+		opacity: var(--bg-opacity, 0.5);
+	}
+</style>
+<section
+	id={id}
+	class={`bg-${color} py-5 position-relative overflow-hidden`}
+	style={`--bg-opacity: ${opacity};`}
+>
+	<AnimalPrint class='position-absolute z-1 w-100 h-auto inset-0' />
+	<div class='container position-relative z-2'>
+		<slot />
+	</div>
+</section>

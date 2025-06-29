@@ -1,6 +1,17 @@
-<div class='container py-5'>
-	<div class='row justify-content-center'>
-		<div class='col-lg-8 text-center'>
+---
+import Photo from '../components/Photo.astro';
+import Portrait from '../assets/portrait.jxl';
+---
+
+<section class='container py-5'>
+	<div class='row flex-row-reverse justify-content-center align-items-center'>
+		<div class='col col-md-4'>
+			<Photo
+				photo={Portrait}
+				alt="Olivia's portrait"
+			/>
+		</div>
+		<div class='col col-md-6 text-center'>
 			<h2 class='mb-0 display-2'>About Olivia</h2>
 			<p class='fs-6 mb-0'>
 				From her first smile to her first step, Olivia has brought joy,
@@ -10,4 +21,4 @@
 			</p>
 		</div>
 	</div>
-</div>
+</section>

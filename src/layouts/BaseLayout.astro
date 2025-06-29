@@ -32,4 +32,7 @@ const pageDescription = description || SITE_DESCRIPTION;
 <style lang='scss' is:global>
 	@use '../scss/bootstrap.scss';
 	@use '../scss/main.scss';
+	:where(h1, h2, h3, h4, h5, h6) {
+		text-wrap: balance;
+	}
 </style>
