@@ -16,6 +16,10 @@ jobs:
         steps:
             - name: Checkout your repository using git
               uses: actions/checkout@v4
+            - name: Set up environment variables from GitHub Secrets
+              run: |
+                  echo "WP_APP_USER=${{ secrets.WP_APP_USER }}" >> $GITHUB_ENV
+                  echo "WP_APP_PASSWORD=${{ secrets.WP_APP_PASSWORD }}" >> $GITHUB_ENV
             - name: Install, build, and upload your site
               uses: withastro/action@v4
               with:

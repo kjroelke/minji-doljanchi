@@ -7,6 +7,11 @@ export default async function submitRSVPForm(data: RSVPFormData) {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
+				Authorization:
+					'Basic ' +
+					btoa(
+						`${process.env.WP_APP_USER}:${process.env.WP_APP_PASSWORD}`
+					),
 			},
 			body: JSON.stringify({
 				name: data.name,
@@ -21,8 +26,8 @@ export default async function submitRSVPForm(data: RSVPFormData) {
 	);
 	const result = await response.json();
 	if (result.success) {
-		alert('Email sent!');
+		return 'Thank you for your RSVP!';
 	} else {
-		alert('There was an error.');
+		return result.error;
 	}
 }

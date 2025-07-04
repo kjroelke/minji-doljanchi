@@ -15,10 +15,9 @@ export default function RSVPForm() {
 
 	async function onSubmit(data: RSVPFormData) {
 		try {
-			await submitRSVPForm(data);
-			setSubmitted('Thank you for your RSVP!');
+			const result = await submitRSVPForm(data);
+			setSubmitted(result);
 		} catch (error) {
-			console.error('Error submitting RSVP form:', error);
 			setSubmitted(
 				`There was an error submitting your RSVP. ${error}. Please try again later.`
 			);
