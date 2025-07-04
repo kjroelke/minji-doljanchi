@@ -13,6 +13,7 @@ export default function RSVPForm() {
 	} = useForm<RSVPFormData>();
 	const [submitted, setSubmitted] = useState('');
 	const rsvp = watch('rsvp');
+	const [loading, setLoading] = useState(false);
 
 	// Recaptcha v3 integration
 	const [recaptchaReady, setRecaptchaReady] = useState(false);
@@ -25,9 +26,11 @@ export default function RSVPForm() {
 	}, []);
 
 	async function onSubmit(data: RSVPFormData) {
+		setLoading(true);
 		// @ts-ignore
 		if (!window.grecaptcha) {
 			setSubmitted('Recaptcha not loaded. Please try again later.');
+			setLoading(false);
 			return;
 		}
 		try {
@@ -42,7 +45,8 @@ export default function RSVPForm() {
 			setSubmitted(
 				`There was an error submitting your RSVP. ${error}. Please try again later.`
 			);
-			return;
+		} finally {
+			setLoading(false);
 		}
 	}
 
@@ -62,6 +66,7 @@ export default function RSVPForm() {
 					placeholder="Your Name"
 					autoComplete="name"
 					{...register('name', { required: true })}
+					disabled={loading}
 				/>
 				{errors.name && (
 					<span className="text-danger small">Name is required</span>
@@ -74,6 +79,7 @@ export default function RSVPForm() {
 					className="form-control"
 					placeholder="Your Email"
 					{...register('email', { required: true })}
+					disabled={loading}
 				/>
 				{errors.email && (
 					<span className="text-danger small">Email is required</span>
@@ -86,6 +92,7 @@ export default function RSVPForm() {
 							type="radio"
 							value="yes"
 							{...register('rsvp', { required: true })}
+							disabled={loading}
 						/>{' '}
 						Yes, I/we will attend
 					</label>
@@ -94,6 +101,7 @@ export default function RSVPForm() {
 							type="radio"
 							value="no"
 							{...register('rsvp', { required: true })}
+							disabled={loading}
 						/>{' '}
 						No, I/we cannot attend
 					</label>
@@ -113,6 +121,7 @@ export default function RSVPForm() {
 							placeholder="Number of Adults"
 							min={1}
 							{...register('adults', { required: true, min: 1 })}
+							disabled={loading}
 						/>
 						{errors.adults && (
 							<span className="text-danger small">Required</span>
@@ -125,6 +134,7 @@ export default function RSVPForm() {
 							placeholder="Number of Kids"
 							min={0}
 							{...register('kids', { required: true, min: 0 })}
+							disabled={loading}
 						/>
 						{errors.kids && (
 							<span className="text-danger small">Required</span>
@@ -135,6 +145,7 @@ export default function RSVPForm() {
 							className="form-control"
 							placeholder="Dietary restrictions or other notes"
 							{...register('dietary')}
+							disabled={loading}
 						></textarea>
 						{errors.dietary && (
 							<span className="text-danger small">Required</span>
@@ -148,17 +159,27 @@ export default function RSVPForm() {
 						className="form-control"
 						placeholder="Send us a note (optional)"
 						{...register('note')}
+						disabled={loading}
 					></textarea>
 				</div>
 			)}
 			{rsvp && (
 				<div className="col-12">
-					<input
+					<button
 						type="submit"
 						className="btn btn-outline-dark"
-						value="RSVP"
-						disabled={!recaptchaReady}
-					/>
+						disabled={!recaptchaReady || loading}
+						style={{ position: 'relative', minWidth: 100 }}
+					>
+						{loading ? (
+							<span
+								className="spinner-border spinner-border-sm me-2"
+								role="status"
+								aria-hidden="true"
+							></span>
+						) : null}
+						RSVP
+					</button>
 					{!recaptchaReady && (
 						<div className="text-danger small mt-2">
 							Loading Recaptcha...

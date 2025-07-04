@@ -35,7 +35,10 @@ $custom-colors: (
 */
 $font-size-base: 1rem;
 $font-family-sans-serif: v.$font-body;
-$font-family-monospace: Monaspace Neon, "Courier New", monospace;
+$font-family-monospace:
+	Monaspace Neon,
+	"Courier New",
+	monospace;
 
 // LINKS
 $link-color: $primary;
@@ -193,7 +196,7 @@ $theme-colors: map.merge($theme-colors, $custom-colors);
 // @import "bootstrap/scss/tooltip";
 // @import "bootstrap/scss/popover";
 // @import "bootstrap/scss/carousel";
-// @import "bootstrap/scss/spinners";
+@import "bootstrap/scss/spinners";
 // @import "bootstrap/scss/placeholders";
 
 // Helpers
