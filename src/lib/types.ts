@@ -6,4 +6,5 @@ export interface RSVPFormData {
 	kids?: number;
 	dietary?: string;
 	note?: string;
+	recaptcha_token?: string;
 }

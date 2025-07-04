@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import type { RSVPFormData } from '../lib/types';
 import submitRSVPForm from '../lib/submitRSVPForm';
+import { recaptchaSiteKey } from '../consts';
 
 export default function RSVPForm() {
 	const {
@@ -13,9 +14,29 @@ export default function RSVPForm() {
 	const [submitted, setSubmitted] = useState('');
 	const rsvp = watch('rsvp');
 
+	// Recaptcha v3 integration
+	const [recaptchaReady, setRecaptchaReady] = useState(false);
+	useEffect(() => {
+		// @ts-ignore
+		if (window.grecaptcha) {
+			setRecaptchaReady(true);
+			return;
+		}
+	}, []);
+
 	async function onSubmit(data: RSVPFormData) {
+		// @ts-ignore
+		if (!window.grecaptcha) {
+			setSubmitted('Recaptcha not loaded. Please try again later.');
+			return;
+		}
 		try {
-			const result = await submitRSVPForm(data);
+			// @ts-ignore
+			const recaptcha_token = await window.grecaptcha.execute(
+				recaptchaSiteKey,
+				{ action: 'submit' }
+			);
+			const result = await submitRSVPForm({ ...data, recaptcha_token });
 			setSubmitted(result);
 		} catch (error) {
 			setSubmitted(
@@ -136,7 +157,13 @@ export default function RSVPForm() {
 						type="submit"
 						className="btn btn-outline-dark"
 						value="RSVP"
+						disabled={!recaptchaReady}
 					/>
+					{!recaptchaReady && (
+						<div className="text-danger small mt-2">
+							Loading Recaptcha...
+						</div>
+					)}
 				</div>
 			)}
 		</form>

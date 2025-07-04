@@ -21,6 +21,7 @@ export default async function submitRSVPForm(data: RSVPFormData) {
 				kids: data.kids,
 				dietary: data.dietary,
 				note: data.note,
+				recaptcha_token: data.recaptcha_token,
 			}),
 		}
 	);
@@ -28,6 +29,6 @@ export default async function submitRSVPForm(data: RSVPFormData) {
 	if (result.success) {
 		return 'Thank you for your RSVP!';
 	} else {
-		return result.error;
+		return result.error || result.message || 'Unknown error.';
 	}
 }
