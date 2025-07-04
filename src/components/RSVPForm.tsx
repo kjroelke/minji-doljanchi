@@ -1,38 +1,33 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import type { RSVPFormData } from '../lib/types';
+import submitRSVPForm from '../lib/submitRSVPForm';
 
-interface RSVPFormData {
-	name: string;
-	email: string;
-	rsvp: 'yes' | 'no';
-	adults?: number;
-	kids?: number;
-	dietary?: string;
-	note?: string;
-}
-
-const RSVPForm: React.FC = () => {
+export default function RSVPForm() {
 	const {
 		register,
 		handleSubmit,
 		watch,
 		formState: { errors },
 	} = useForm<RSVPFormData>();
-	const [submitted, setSubmitted] = useState(false);
+	const [submitted, setSubmitted] = useState('');
 	const rsvp = watch('rsvp');
 
-	const onSubmit = (data: RSVPFormData) => {
-		// Replace with your API call or Formspree integration
-		setSubmitted(true);
-		// Example: fetch('/api/rsvp', { method: 'POST', body: JSON.stringify(data) })
-	};
+	async function onSubmit(data: RSVPFormData) {
+		try {
+			await submitRSVPForm(data);
+			setSubmitted('Thank you for your RSVP!');
+		} catch (error) {
+			console.error('Error submitting RSVP form:', error);
+			setSubmitted(
+				`There was an error submitting your RSVP. ${error}. Please try again later.`
+			);
+			return;
+		}
+	}
 
-	if (submitted) {
-		return (
-			<div className="alert alert-success mt-4">
-				Thank you for your RSVP!
-			</div>
-		);
+	if ('' !== submitted) {
+		return <div className="alert alert-success mt-4">{submitted}</div>;
 	}
 
 	return (
@@ -147,6 +142,4 @@ const RSVPForm: React.FC = () => {
 			)}
 		</form>
 	);
-};
-
-export default RSVPForm;
+}
