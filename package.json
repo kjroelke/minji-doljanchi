@@ -12,17 +12,14 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
-		"@astrojs/react": "^4.3.0",
+		"@types/canvas-confetti": "^1.9.0",
 		"astro": "^5.8.1",
 		"bootstrap": "^5.3.6",
 		"canvas-confetti": "^1.9.3",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0",
-		"react-hook-form": "^7.59.0",
-		"sass": "^1.89.1",
 		"typescript": "^5.8.3"
 	},
 	"devDependencies": {
-		"@wordpress/prettier-config": "^4.24.0"
+		"@wordpress/prettier-config": "^4.24.0",
+		"sass": "^1.89.1"
 	}
 }
