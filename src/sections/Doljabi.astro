@@ -96,6 +96,13 @@ const doljabiOptions = [
 
 			form?.addEventListener('submit', async (e) => {
 				e.preventDefault();
+				if (
+					!(form instanceof HTMLFormElement) ||
+					!(submitBtn instanceof HTMLButtonElement) ||
+					!(messageDiv instanceof HTMLElement)
+				) {
+					return;
+				}
 				submitBtn.disabled = true;
 				messageDiv.textContent = '';
 				const formData = new FormData(form);
