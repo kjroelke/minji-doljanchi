@@ -1,0 +1,64 @@
+---
+import Photo from '../components/Photo.astro';
+import death from '../assets/death.jpeg';
+---
+
+<section
+	id='expectations'
+	class='container py-5 d-flex flex-column align-items-stretch row-gap-4 row-gap-lg-5'
+>
+	<div class='row justify-content-center align-items-center row-gap-3'>
+		<div class='col-5 col-md-4'>
+			<Photo
+				photo={death}
+				alt='Olivia after eating blueberries for the first time'
+			/>
+		</div>
+		<div class='col-12 col-md-6 text-center text-md-start'>
+			<h2 class='display-2 mb-0'>What to expect</h2>
+			<p class='fs-6'>
+				Join us for a day filled with joy, laughter, and a touch of
+				Korean tradition. Here's what you can look forward to:
+			</p>
+		</div>
+	</div>
+	<div
+		class='row row-cols-1 row-cols-md-auto row-cols-lg-3 row-gap-4 text-center'
+	>
+		<div class='col'>
+			<h3 class='display-3'>🕰️ Times are loose</h3>
+			<p class='fs-6'>
+				The party will generally be 3 – 5pm, but don't feel obligated to
+				stick around till the end or to show up <em>exactly</em> on time.
+				We're just excited to see you!
+			</p>
+		</div>
+		<div class='col'>
+			<h3 class='display-3'>🥢 Korean-American Cuisine</h3>
+			<p class='fs-6'>
+				We'll have light (egg-and-peanut-free) snacks from both sides of
+				the world: charcuterie boards and Korean staples like <a
+					href='https://www.maangchi.com/recipe/japchae'
+					target='_blank'
+					>japchae</a
+				>
+				and <a
+					href='https://www.maangchi.com/recipe/gimbap'
+					target='_blank'
+					>kimbap</a
+				>!
+			</p>
+			<p class='fs-6'>
+				There will be waters and sodas, and we'll even have a fun soju
+				cocktail 🍹
+			</p>
+		</div>
+		<div class='col'>
+			<h3 class='display-3'>🎂 Singing & Cake</h3>
+			<p class='fs-6'>
+				Around 4, we'll gather to sing "Happy Birthday" and watch Olivia
+				smash her cake!
+			</p>
+		</div>
+	</div>
+</section>

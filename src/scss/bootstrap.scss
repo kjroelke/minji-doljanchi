@@ -189,7 +189,7 @@ $theme-colors: map.merge($theme-colors, $custom-colors);
 // @import "bootstrap/scss/accordion";
 // @import "bootstrap/scss/pagination";
 // @import "bootstrap/scss/badge";
-// @import "bootstrap/scss/alert";
+@import "bootstrap/scss/alert";
 // @import "bootstrap/scss/progress";
 // @import "bootstrap/scss/list-group";
 // @import "bootstrap/scss/toasts";

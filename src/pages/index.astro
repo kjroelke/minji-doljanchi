@@ -4,13 +4,63 @@ import Hero from '../sections/Hero.astro';
 import About from '../sections/About.astro';
 import EventDetails from '../sections/EventDetails.astro';
 import Doljabi from '../sections/Doljabi.astro';
+import WhatToExpect from '../sections/WhatToExpect.astro';
 ---
 
 <BaseLayout>
 	<main>
 		<Hero />
-		<About />
 		<EventDetails />
+		<About />
 		<Doljabi />
+		<WhatToExpect />
 	</main>
 </BaseLayout>
+<script>
+	// Intersection Observer fade-up for all images after the first
+	document.addEventListener('DOMContentLoaded', () => {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			return;
+		}
+		const images = Array.from(document.querySelectorAll('img'));
+		if (images.length < 2) {
+			return;
+		}
+		// Add fade-up class to all except the first
+		images.slice(1).forEach((img) => {
+			img.classList.add('fade-up-img');
+			img.style.opacity = '0';
+			img.style.transform = 'translateY(40px)';
+			img.style.transition =
+				'opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1)';
+		});
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const img = entry.target as HTMLImageElement;
+						img.classList.add('fade-up-img-visible');
+						img.style.opacity = '1';
+						img.style.transform = 'none';
+						observer.unobserve(img);
+					}
+				});
+			},
+			{ threshold: 0.15 }
+		);
+		images.slice(1).forEach((img) => observer.observe(img));
+	});
+</script>
+<style>
+	.fade-up-img {
+		opacity: 0;
+		transform: translateY(40px);
+		transition:
+			opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+			transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	.fade-up-img-visible {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+</style>

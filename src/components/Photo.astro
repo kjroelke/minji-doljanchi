@@ -4,9 +4,10 @@ import { Image } from 'astro:assets';
 export interface Props {
 	photo: ImageMetadata;
 	alt: string;
+	eager?: boolean;
 }
 
-const { photo, alt } = Astro.props;
+const { photo, alt, eager } = Astro.props;
 ---
 
 <figure class='ratio ratio-1x1 mb-0'>
@@ -16,5 +17,6 @@ const { photo, alt } = Astro.props;
 		alt={alt}
 		width={400}
 		height={400}
+		loading={eager ? 'eager' : 'lazy'}
 	/>
 </figure>
