@@ -21,7 +21,7 @@ export default async function submitRSVPForm(data: RSVPFormData) {
 		}
 	);
 	const result = await response.json();
-
+	console.log(result);
 	if (result.success) {
 		return "Thank you for your RSVP! Check your email for confirmation from “WordPress,” we promise it's us! (It might take a few minutes to arrive, and it might end up in your spam folder, so please check there too.)";
 	} else {
