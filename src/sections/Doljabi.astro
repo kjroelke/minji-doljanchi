@@ -1,5 +1,88 @@
-<section
-	class='py-5 text-bg-primary bg-opacity-25'
+---
+import AnimalPrintSection from '../components/AnimalPrintSection.astro';
+import DoljabiOffcanvas from '../components/DoljabiOffcanvas.astro';
+const doljabiOptions = [
+	{ value: '', label: 'Choose a Doljabi Item...', disabled: true },
+	{ value: 'pencil', label: '✏️ Pencil (Scholar)' },
+	{ value: 'money', label: '💵 Money (Wealth)' },
+	{ value: 'thread', label: '🧵 Thread (Long Life)' },
+	{ value: 'stethoscope', label: '🩺 Stethoscope (Doctor)' },
+	{ value: 'microphone', label: '🎤 Microphone (Performer)' },
+	{ value: 'soccer', label: '⚽ Soccer Ball (Athlete)' },
+	{ value: 'paintbrush', label: '🖌️ Paintbrush (Artist)' },
+];
+---
+
+<AnimalPrintSection
+	color='light'
+	opacity={0.9}
 	id='doljabi'
 >
-</section>
+	<div class='row justify-content-center'>
+		<div class='col-md-8 text-center'>
+			<h2 class='display-2 mb-0'>Predict Min-Ji's Future!</h2>
+			<p class='fs-6 fw-bold'>
+				Which item will Olivia pick up during the doljabi ceremony?
+			</p>
+		</div>
+	</div>
+	<div class='row justify-content-center'>
+		<div class='col-md-8'>
+			<form
+				method='POST'
+				action='https://www.kjroelke.online/wp-json/custom/v1/send-email'
+				class='text-md-center d-flex flex-column row-gap-3 align-items-center'
+			>
+				<div class='row row-gap-3 justify-content-center'>
+					<div class='col'>
+						<input
+							type='text'
+							class='form-control'
+							placeholder='Your Name'
+							name='name'
+							required
+							autocomplete='name'
+						/>
+					</div>
+					<div class='col'>
+						<select
+							class='form-select'
+							name='doljabi'
+							required
+						>
+							{
+								doljabiOptions.map((option) => (
+									<option
+										value={option.value}
+										disabled={option.disabled}
+									>
+										{option.label}
+									</option>
+								))
+							}
+						</select>
+					</div>
+				</div>
+				<div class='col-auto d-flex gap-3'>
+					<button
+						type='submit'
+						class='btn btn-dark'
+						style='position: relative; min-width: 100px;'
+					>
+						Cast Your Vote!
+					</button>
+					<button
+						class='btn btn-primary'
+						type='button'
+						data-bs-toggle='offcanvas'
+						data-bs-target='#doljabiOffcanvas'
+						aria-controls='doljabiOffcanvas'
+					>
+						Wait, what?
+					</button>
+				</div>
+				<DoljabiOffcanvas />
+			</form>
+		</div>
+	</div>
+</AnimalPrintSection>

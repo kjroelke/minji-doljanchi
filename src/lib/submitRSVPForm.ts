@@ -10,20 +10,15 @@ export default async function submitRSVPForm(data: RSVPFormData) {
 			},
 			body: JSON.stringify({
 				name: data.name,
-				email: data.email,
-				rsvp: data.rsvp,
-				adults: data.adults,
-				kids: data.kids,
-				dietary: data.dietary,
-				note: data.note,
-				recaptcha_token: data.recaptcha_token,
+				vote: data.vote,
+				doljabi: data.doljabi,
 			}),
 		}
 	);
 	const result = await response.json();
-	console.log(result);
+
 	if (result.success) {
-		return "Thank you for your RSVP! Check your email for confirmation from “WordPress,” we promise it's us! (It might take a few minutes to arrive, and it might end up in your spam folder, so please check there too.)";
+		return 'Nice!';
 	} else {
 		return result.error || result.message || 'Unknown error.';
 	}

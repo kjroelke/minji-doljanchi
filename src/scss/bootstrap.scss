@@ -115,8 +115,8 @@ $input-btn-padding-y-sm: 0.25rem;
 * Offcanvas
 */
 
-$offcanvas-bg-color: $info;
-$offcanvas-color: white;
+$offcanvas-bg-color: $primary;
+$offcanvas-color: $dark;
 
 // ================================================
 
@@ -150,15 +150,16 @@ $theme-colors: map.merge($theme-colors, $custom-colors);
 // Override Bootstrap Buttons
 @each $color, $value in $theme-colors {
 	.btn-#{$color} {
-		@if $color == "primary" {
-			/**
-			* Override the styles with the `button-variant` mixin
-			* @see https://getbootstrap.com/docs/5.3/components/buttons/#sass-loops
-			*/
-			@include button-variant($value, $value);
-		} @else {
-			@include button-variant($value, $value);
-		}
+		@include button-variant(
+			$value,
+			$value,
+			$hover-background: transparent,
+			$hover-color: $value,
+			$hover-border: $value,
+			$active-background: transparent,
+			$active-color: $value,
+			$active-border: $value
+		);
 	}
 }
 
@@ -175,7 +176,7 @@ $theme-colors: map.merge($theme-colors, $custom-colors);
 
 // Optional Bootstrap Modules (w/ Dependencies)
 @import "bootstrap/scss/offcanvas";
-@import "bootstrap/scss/dropdown";
+// @import "bootstrap/scss/dropdown";
 @import "bootstrap/scss/type";
 // @import "bootstrap/scss/images";
 // @import "bootstrap/scss/tables";

@@ -24,11 +24,13 @@ const pageDescription = description || SITE_DESCRIPTION;
 		/>
 	</head>
 	<body>
-		<Header />
 		<slot />
 		<Footer />
 	</body>
 </html>
+<script>
+	import 'bootstrap/js/dist/offcanvas';
+</script>
 <style lang='scss' is:global>
 	@use '../scss/bootstrap.scss';
 	@use '../scss/main.scss';
